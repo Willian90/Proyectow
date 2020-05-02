@@ -9,7 +9,7 @@ const vue = new Vue({
             {nombre:"Papaya", cantidad:9},
             {nombre:"Banana", cantidad:7},
             {nombre:"Sandía", cantidad:0},
-            {nombre:"Guayaba", cantidad:23}
+            {nombre:"Guayaba", cantidad:27}
             
             ]
         

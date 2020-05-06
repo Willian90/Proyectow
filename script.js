@@ -11,7 +11,18 @@ const vue = new Vue({
             {nombre:"Sandía", cantidad:0},
             {nombre:"Guayaba", cantidad:29}
             
-            ]
+            ],
+        contador: 0,
+        total: 0
         
+    },
+    computed: {
+        sumar(){
+            this.total= 0
+            for (fruta of this.frutas) {
+                this.total+= fruta.cantidad;   
+            }
+            return this.total
+        }
     }
 })

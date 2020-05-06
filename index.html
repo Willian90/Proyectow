@@ -20,11 +20,12 @@
                 <h1> {{message}} </h1>
             </div>
             <div>
-                <ul v-for="(fruta, index) in frutas" :key="index">
-                    
-                    <li> {{fruta.nombre}} {{fruta.cantidad}} </li>
+                <ul v-for="(fruta, index) in frutas" :key="index">          
+                    <li> {{fruta.nombre}} {{fruta.cantidad}} <span v-if="fruta.cantidad===0">Sin stock</span> </li>
                 </ul>
             </div>
+            <button class="btn btn-primary" @click="contador++">Incrementar</button>
+            <span>{{contador}}</span> <span> TOTAL: {{sumar}} </span>
         </div>
     </div>
 

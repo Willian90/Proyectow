@@ -19,13 +19,60 @@
             <div :class="[alerta, centrar]">
                 <h1> {{message}} </h1>
             </div>
+            <primer></primer>
             <div>
-                <ul v-for="(fruta, index) in frutas" :key="index">          
-                    <li> {{fruta.nombre}} {{fruta.cantidad}} <span v-if="fruta.cantidad===0">Sin stock</span> </li>
-                </ul>
+                <form action="" method="POST" class="form-horizontal" role="form">
+                               
+                    <div class="form-group">
+                        <input type="text" v-model="nuevafruta" name="nombre" id="nombre" placeholder="Ingrese nombre" >
+                    </div>   
+                    <div class="form-group">
+                        <input type="text" v-model.number="nuevacantidad" name="nombre" id="nombre" placeholder="Ingrese cantidad" >
+                    </div>   
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" @click="agregarFruta" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </div>
+            </form>
+            
+            
             </div>
-            <button class="btn btn-primary" @click="contador++">Incrementar</button>
-            <span>{{contador}}</span> <span> TOTAL: {{sumar}} </span>
+            <div>
+                
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>                       
+                        <tr v-for="(fruta, index) in frutas" :key="index">
+                            <td>{{index}}</td>
+                            <td>{{fruta.nombre}}</td>
+                            <td><input class="center" type="text" name="cantidad" v-model.number="fruta.cantidad" id="cantidad"></td>
+                            <td v-if="fruta.cantidad===0">Sin stock</td>
+                            <td v-else>con stock</td>
+                            <td>
+                            <button class="btn btn-primary" @click="fruta.cantidad++">Incrementar</button>
+                            <button type="button" class="btn btn-warning" @click="editar(index)">Editar</button>
+                            <button type="button" class="btn btn-danger" @click="eliminar(index)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div m-3>
+                     <span mx-4> TOTAL: {{sumar}} </span>
+                </div>
+                <div>
+                    <button-counter></button-counter>
+                </div>
+               
+            
         </div>
     </div>
 
